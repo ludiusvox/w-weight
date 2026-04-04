@@ -18,9 +18,20 @@ Adaptive Theme: Light and Dark mode support for any gym environment.
 
 Form Tutorials: Embedded video guides for complex movements like Landmine Lifts and Roman Chair setups.
 
-## Project DemoSee the application in action, featuring the light/dark theme toggle and the Double-Ladder "W" setup:
+## Project Demo
 
-Watch the W-Weight App Demo
+See the application in action, featuring the light/dark theme toggle and the Double-Ladder "W" setup:
+
+---
+
+### ## Project Demo
+
+Click the image below to watch the W-Weight App in action (opens in GitHub Issues):
+
+[![W-Weight Demo Video](https://img.youtube.com/vi/placeholder/0.jpg)](https://github.com/ludiusvox/w-weight/issues/1)
+> *Note: If the preview above is static, click it to launch the full high-resolution .webm recording in the project tracker.*
+
+---
 
 ## Scientific Rationale
 
