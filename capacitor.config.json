@@ -1,5 +1,6 @@
 {
   "appId": "com.figma.mymakefile",
-  "appName": "MyMakeFile",
-  "webDir": "dist"
+  "appName": "w-weight",
+  "webDir": "dist",
+  "version": "1.2"
 }

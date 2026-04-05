@@ -12,6 +12,7 @@ const muscleGroups = [
   'Chest',
   'Shoulder',
   'Trapezoids',
+  'Latissimus',
   'Bicep',
   'Tricep',
   'Core',
