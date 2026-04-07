@@ -3,6 +3,7 @@ import { ProcedureDisplay } from './procedure-display';
 import { Stopwatch } from './stopwatch';
 import { RomanChairSection } from './roman-chair-section';
 import { LandmineSection } from './landmine-section';
+import { RepTracker } from './rep-tracker';
 
 interface WorkoutPageProps {
   muscleGroup: string;
@@ -26,6 +27,7 @@ export function WorkoutPage({ muscleGroup }: WorkoutPageProps) {
             </>
           )}
           <Stopwatch />
+          <RepTracker />
         </div>
       </div>
     </div>

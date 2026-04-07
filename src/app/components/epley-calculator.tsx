@@ -72,6 +72,23 @@ export function EpleyCalculator() {
           <strong className="dark:text-white">How to use:</strong> Enter a weight you can lift for 3-5 reps to estimate your one-rep max (1RM).
           For the Double-Ladder workout, use 70-80% of this calculated 1RM.
         </p>
+        
+        {oneRM && (
+          <div className="mt-4 flex gap-4 justify-center">
+            <div className="flex-1 bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 p-4 rounded-full text-center border-2 border-green-300 dark:border-green-700">
+              <p className="text-xs text-green-800 dark:text-green-200 mb-1">70% of 1RM</p>
+              <p className="text-xl font-bold text-green-900 dark:text-green-100">
+                {(parseFloat(oneRM) * 0.7).toFixed(1)}
+              </p>
+            </div>
+            <div className="flex-1 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 p-4 rounded-full text-center border-2 border-purple-300 dark:border-purple-700">
+              <p className="text-xs text-purple-800 dark:text-purple-200 mb-1">80% of 1RM</p>
+              <p className="text-xl font-bold text-purple-900 dark:text-purple-100">
+                {(parseFloat(oneRM) * 0.8).toFixed(1)}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </Card>
   );

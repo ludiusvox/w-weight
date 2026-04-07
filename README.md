@@ -18,6 +18,7 @@ Adaptive Theme: Light and Dark mode support for any gym environment.
 
 Form Tutorials: Embedded video guides for complex movements like Landmine Lifts and Roman Chair setups.
 
+<<<<<<< HEAD
 ## Project Demo
 
 See the application in action, featuring the light/dark theme toggle and the Double-Ladder "W" setup:
@@ -28,6 +29,8 @@ See the application in action, featuring the light/dark theme toggle and the Dou
 
 To ensure the precision of the high-intensity resistance protocols and periodization calculations within **w-weight**, functional issues are documented with visual demonstrations.
 
+=======
+>>>>>>> 29bd17b (v1.5 setup)
 ### Current Technical Issue
 A new demonstration has been logged regarding the current application state. This recording walks through the specific interface interactions and logic currently under review.
 
