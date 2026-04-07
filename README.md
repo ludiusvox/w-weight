@@ -24,14 +24,20 @@ See the application in action, featuring the light/dark theme toggle and the Dou
 
 ---
 
-### ## Project Demo
+## Issue Tracking & Demonstrations
 
-Click the image below to watch the W-Weight App in action (opens in GitHub Issues):
+To ensure the precision of the high-intensity resistance protocols and periodization calculations within **w-weight**, functional issues are documented with visual demonstrations.
+
+### Current Technical Issue
+A new demonstration has been logged regarding the current application state. This recording walks through the specific interface interactions and logic currently under review.
 
 [![W-Weight Demo Video](https://img.youtube.com/vi/placeholder/0.jpg)](https://github.com/ludiusvox/w-weight/issues/1)
-> *Note: If the preview above is static, click it to launch the full high-resolution .webm recording in the project tracker.*
+
+> **Note:** If the preview above is static, click it to launch the full high-resolution `.webm` recording in the project tracker at **Issue #1**.
 
 ---
+
+*For technical contributors: Please refer to the [Issue Tracker](https://github.com/ludiusvox/w-weight/issues) for the full discussion and debugging logs associated with this demonstration.*
 
 ## Scientific Rationale
 
