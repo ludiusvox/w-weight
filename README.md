@@ -18,7 +18,6 @@ Adaptive Theme: Light and Dark mode support for any gym environment.
 
 Form Tutorials: Embedded video guides for complex movements like Landmine Lifts and Roman Chair setups.
 
-<<<<<<< HEAD
 ## Project Demo
 
 See the application in action, featuring the light/dark theme toggle and the Double-Ladder "W" setup:
@@ -30,11 +29,16 @@ See the application in action, featuring the light/dark theme toggle and the Dou
 To ensure the precision of the high-intensity resistance protocols and periodization calculations within **w-weight**, functional issues are documented with visual demonstrations.
 
 =======
->>>>>>> 29bd17b (v1.5 setup)
 ### Current Technical Issue
 A new demonstration has been logged regarding the current application state. This recording walks through the specific interface interactions and logic currently under review.
 
 [Issue #2: Weightlifting App Feature Request](https://github.com/ludiusvox/w-weight/issues/2#issue-4219838950)
+=======
+### Current Technical Issue
+A new demonstration has been logged regarding the current application state. This recording walks through the specific interface interactions and logic currently under review.
+
+[![W-Weight Demo Video](https://img.youtube.com/vi/placeholder/0.jpg)](https://github.com/ludiusvox/w-weight/issues/1)
+>>>>>>> 29bd17b (v1.5 setup)
 
 > **Note:** If the preview above is static, click it to launch the full high-resolution `.webm` recording in the project tracker at **Issue #1**.
 
