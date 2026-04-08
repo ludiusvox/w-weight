@@ -40,17 +40,18 @@ export function RepTracker() {
           disabled={currentIndex === 0}
           variant="outline"
           size="icon"
+          className="flex-shrink-0"
         >
           <ChevronLeft className="size-5" />
         </Button>
 
-        <div className="flex-1 overflow-x-auto">
-          <div className="flex gap-2 items-center justify-start min-w-max px-4">
+        <div className="flex-1 overflow-x-auto overflow-y-hidden scrollbar-hide" style={{ WebkitOverflowScrolling: 'touch' }}>
+          <div className="flex gap-2 items-center justify-start py-2">
             {repSequence.map((rep, index) => (
-              <div key={index} className="flex items-center">
+              <div key={index} className="flex items-center flex-shrink-0">
                 <button
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                  className={`w-12 h-12 rounded-full flex items-center justify-center transition-all flex-shrink-0 ${
                     index === currentIndex
                       ? 'bg-blue-600 text-white scale-125 shadow-lg ring-4 ring-blue-200 dark:ring-blue-800'
                       : index < currentIndex
@@ -62,7 +63,7 @@ export function RepTracker() {
                 </button>
                 {index < repSequence.length - 1 && (
                   <div
-                    className={`w-4 h-0.5 ${
+                    className={`w-4 h-0.5 flex-shrink-0 ${
                       index < currentIndex
                         ? 'bg-green-500'
                         : 'bg-gray-300 dark:bg-gray-600'
@@ -79,6 +80,7 @@ export function RepTracker() {
           disabled={currentIndex === repSequence.length - 1}
           variant="outline"
           size="icon"
+          className="flex-shrink-0"
         >
           <ChevronRight className="size-5" />
         </Button>

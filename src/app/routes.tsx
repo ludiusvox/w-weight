@@ -16,6 +16,7 @@ const muscleGroups = [
   'Bicep',
   'Tricep',
   'Core',
+  'Prilepins',
 ];
 
 export const router = createBrowserRouter([
