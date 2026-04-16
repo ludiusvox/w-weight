@@ -41,7 +41,7 @@ export function RootLayout() {
             <ThemeToggle />
           </div>
           
-          <nav className="flex flex-wrap gap-2">
+          <nav className="flex flex-wrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {muscleGroups.map((group) => {
               const path = group.toLowerCase();
               const isActive = activePath === path;
@@ -50,7 +50,7 @@ export function RootLayout() {
                 <Link
                   key={group}
                   to={path === 'gluteus' ? '/' : `/${path}`}
-                  className={`px-4 py-2 rounded-md transition-colors ${
+                  className={`px-4 py-2 rounded-md transition-colors whitespace-nowrap ${
                     isActive
                       ? 'bg-blue-600 text-white dark:bg-blue-500'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
@@ -60,11 +60,51 @@ export function RootLayout() {
                 </Link>
               );
             })}
+            <Link
+              to="/bmi-navy-calc"
+              className={`px-4 py-2 rounded-md transition-colors whitespace-nowrap ${
+                activePath === 'bmi-navy-calc'
+                  ? 'bg-blue-600 text-white dark:bg-blue-500'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+            >
+              BMI Navy Calc
+            </Link>
+            <Link
+              to="/stopwatch"
+              className={`px-4 py-2 rounded-md transition-colors whitespace-nowrap ${
+                activePath === 'stopwatch'
+                  ? 'bg-blue-600 text-white dark:bg-blue-500'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+            >
+              Stopwatch
+            </Link>
+            <Link
+              to="/double-pyramid"
+              className={`px-4 py-2 rounded-md transition-colors whitespace-nowrap ${
+                activePath === 'double-pyramid'
+                  ? 'bg-blue-600 text-white dark:bg-blue-500'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+            >
+              Double Pyramid
+            </Link>
+            <Link
+              to="/exercise-dictionary"
+              className={`px-4 py-2 rounded-md transition-colors whitespace-nowrap ${
+                activePath === 'exercise-dictionary'
+                  ? 'bg-blue-600 text-white dark:bg-blue-500'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
+              }`}
+            >
+              Exercise Dictionary
+            </Link>
           </nav>
         </div>
       </header>
       
-      <main>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <Outlet />
       </main>
     </div>

@@ -43,3 +43,34 @@ Once that's built, remember to copy it over to your root folder again:
 cp android/app/build/outputs/apk/debug/app-debug.apk ./w-weight.apk
 
 Are you seeing the new dist folder files updating correctly when you run your build command?
+
+
+
+$env:OPENAI_API_KEY="sk-lm-J7Iig6MW:Sh7DIzs6mc7Ti7c1CSH9"
+$env:OPENAI_API_BASE="http://localhost:1234/v1"
+aider --model openai/qwen/qwen3.5-35b-a3 --no-show-model-warnings --no-auto-commits
+
+
+# Build the React production files
+npm run build
+
+# Sync the 'dist' folder to the 'android' folder
+npx cap sync android
+
+# Move into the android directory
+cd android
+
+# Make the gradlew script executable (just in case)
+chmod +x gradlew
+
+# Run the build
+./gradlew assembleDebug
+
+# Navigate to the output folder
+cd app/build/outputs/apk/debug/
+
+# Copy it to your root project folder with the new name
+cp app-debug.apk ~/workout-shuffle/w-weight.apk
+
+# Go back to your project root
+cd ~/w-weight

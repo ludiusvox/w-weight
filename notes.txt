@@ -1,0 +1,51 @@
+Please add a new tab/section to the application called "BMI Navy Calc".Create a new component src/app/components/navy-bmi-calculator.tsx using the existing UI patterns (Shadcn UI components like Card, Input, Label, and Tabs if applicable).Implement the US Navy Body Fat Formula for men. Provide a toggle to switch between Imperial (inches) and Metric (cm) units.Formulas to use:Imperial: $\%BF = 86.010 \times \log_{10}(\text{waist} - \text{neck}) - 70.041 \times \log_{10}(\text{height}) + 36.76$Metric: $\%BF = \frac{495}{1.0324 - 0.19077 \times \log_{10}(\text{waist} - \text{neck}) + 0.15456 \times \log_{10}(\text{height})} - 450$Input Fields: Create fields for Height, Neck, and Waist.UI Details: >    * Display the resulting Body Fat Percentage clearly.Include a "Measurement Note" in the UI: "Measure neck just below the larynx (Adam's apple) angled slightly downward, and waist horizontally at the navel."Add a brief explanation that this method is preferred for lifters because it ignores total mass in favor of circumference ratios.Integration: Add this new tab to the top navigation/bubble menu in App.tsx or routes.tsx so it is easily accessible.
+
+
+Please create a comprehensive exercise library based on the "Sample Resistance Exercises for Tactical Athletes" table.
+
+Create a new file src/app/data/exercise-library.ts (create the data directory if it doesn't exist).
+
+Structure the data as a TypeScript object or constant called EXERCISE_LIBRARY. Group the exercises into four categories: upperBody, lowerBody, trunkCore, and totalBody.
+
+Populate the categories with the following items from the provided table:
+
+Upper Body: Bench and chest press + variations, Incline/decline press, Flys, Bent-over row, Renegade DB row, Lat pulldown, Sledgehammer swing, Low pulley row, Shoulder press, Shoulder scaption, Shoulder internal/external rotation, Hyperextension press, Shrug, Upright row, Lateral raise, Front raise, Curl + variations, Preacher curl, Triceps extension, Triceps pushdown, DB jab/uppercut/cross/hook, Four-way neck, DB rotation press, Shoulder-to-shoulder press, KB side press, Wrist and reverse wrist curls, Wrist roller, Plate grab and pinch grip, Pullover.
+
+Lower Body: Back and front squats, Lunge (multidirection), Split squat, Lateral squat, Box squat, Step-up, Jump squat, Overhead squat, Overhead lunge, Good morning, Leg press, Back extension/glute-ham raise, Reverse hyperextension, Prone bent-knee hip extension, SB leg curl, Leg curl, Leg extension, Toe raise, Ankle dorsiflexion, Glute rope pull, Hip thrust/bridge, Wobble board/BOSU squat, Band-resisted step-up/walk/lateral shuffle, Hip adduction/abduction.
+
+Trunk or Core: Renegade bar rotation, DB T-rotation, Wheelbarrow drag, Turkish get-up, MB/slam ball wood chop, Russian twist, SB exchange, Cable rotation, Squat rotation press, Sit-up and press, SB rollout.
+
+Total Body (Compound): Power clean, High pull, Power snatch, Push press, Renegade clean and press, Deadlift + variations, Bear-hug deadlift (bag), Sandbag rotational deadlift, Battling rope circuit, Tire flip, Sled push/drag, KB swing, Sandbag/keg carry, Partner carry/drag, Sandbag/sled drag, Farmer's walk, Super yoke walk, Thruster, Heavy bag throw, DB loading medley.
+
+Export the library so it can be imported elsewhere in the app.
+
+Update UI: If there is a component that lists exercises (like a workout creator or a reference sheet), import this new library and display the items grouped by these categories.
+
+
+
+
+
+Please fix the workout dashboard layout and restore the interactive logic for the tracking tools.Component Restoration: >    * Ensure src/app/components/rep-tracker.tsx uses the repSequence logic (the "bubbles") exactly as provided in my code snippet.Ensure src/app/components/stopwatch.tsx has functional start/stop/reset logic.Fix the Double Pyramid Logic: In the pyramid tracking component, ensure that when a "Double Pyramid" is generated, it creates the full ascending and descending sequence (e.g., 5-4-3-2-1-2-3-4-5) rather than just a single direction.Layout Integration:Create or update the main workout view so that RepTracker, Stopwatch, and EpleyCalculator are all visible on the same page.This page should be organized by the muscle groups/exercises from the EXERCISE_LIBRARY. Each lift should have access to these tracking tools.Epley Calculation:Ensure epley-calculator.tsx is imported and functional. It should take weight and reps to estimate the 1RM using the formula: $1RM = \text{weight} \times (1 + \frac{\text{reps}}{30})$.Refactoring: >    * Do not overwrite the internal logic of the components with static HTML.Use App.tsx or a dedicated WorkoutPage.tsx to import these components as separate modules to keep the code clean and maintainable.  Also it needs 70% 1RM calculation and 80% 1RM calulated from the epley formula below the formula input boxes
+
+
+Please integrate the visual bubble tracking from rep-tracker.tsx with the dynamic calculation logic in double-pyramid.tsx.
+
+Step 1: Update RepTracker
+Modify src/app/components/rep-tracker.tsx so that repSequence is no longer a hardcoded constant. Instead, it should accept repSequence as a prop ({ repSequence }: { repSequence: number[] }).
+
+Add a check: if repSequence is empty or undefined, display a fallback message or return null.
+
+Keep all the visual bubble logic, the currentIndex state, and the Next/Previous/Reset button functionality exactly as it is.
+
+Step 2: Update DoublePyramid
+Modify src/app/components/double-pyramid.tsx to import and render the updated <RepTracker /> component.
+
+Place the <RepTracker /> component directly between the "Pyramid Configuration" block and the "Set Tracking" block.
+
+Create a derived variable that maps the current sets state into an array of numbers (e.g., const currentSequence = sets.map(s => parseInt(s.reps) || 0);).
+
+Pass currentSequence as the repSequence prop to the <RepTracker />.
+
+Step 3: Reset functionality
+When the user clicks "Generate Pyramid Sets" or "Clear Pyramid" in the DoublePyramid component, it needs to force the RepTracker to reset its currentIndex back to 0. You can achieve this by passing a key prop to <RepTracker /> based on the sets length or a state trigger, or by lifting the currentIndex state up into DoublePyramid. Choose the cleanest React approach.
+

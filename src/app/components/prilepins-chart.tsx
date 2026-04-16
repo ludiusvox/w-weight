@@ -138,8 +138,8 @@ export function PrilepinsChart() {
             </div>
             <div>
               <h3 className="mb-1 dark:text-white">Medium Weeks</h3>
-              <p className="text-sm dark:text-gray-800">
-                Aim for the <strong>Optimal total reps</strong> in the 70–80% range
+              <p className="text-sm dark:text-white">
+                Aim for the <strong className="dark:text-white">Optimal total reps</strong> in the 70–80% range
               </p>
             </div>
           </div>
@@ -150,8 +150,8 @@ export function PrilepinsChart() {
             </div>
             <div>
               <h3 className="mb-1 dark:text-white">High Weeks</h3>
-              <p className="text-sm dark:text-gray-800">
-                Push toward the higher end of the <strong>Range</strong> in the 80–90% bracket
+              <p className="text-sm dark:text-white">
+                Push toward the higher end of the <strong className="dark:text-white">Range</strong> in the 80–90% bracket
               </p>
             </div>
           </div>
@@ -162,8 +162,8 @@ export function PrilepinsChart() {
             </div>
             <div>
               <h3 className="mb-1 dark:text-white">Low Weeks</h3>
-              <p className="text-sm dark:text-gray-800">
-                Stay at the low end of the <strong>Range</strong> at &lt; 70% to allow for recovery
+              <p className="text-sm dark:text-white">
+                Stay at the low end of the <strong className="dark:text-white">Range</strong> at &lt; 70% to allow for recovery
               </p>
             </div>
           </div>
@@ -174,8 +174,8 @@ export function PrilepinsChart() {
             </div>
             <div>
               <h3 className="mb-1 dark:text-white">Peak Weeks</h3>
-              <p className="text-sm dark:text-gray-800">
-                Aim for the <strong>Optimal (7 reps)</strong> at 90%+, typically done as multiple singles or doubles
+              <p className="text-sm dark:text-white">
+                Aim for the <strong className="dark:text-white">Optimal (7 reps)</strong> at 90%+, typically done as multiple singles or doubles
               </p>
             </div>
           </div>
