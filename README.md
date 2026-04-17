@@ -10,12 +10,26 @@ The logic is built to handle heavy intensity (e.g., 400lb+ squats) by managing v
 ##✨ Key Features
 
 1RM Calculator: Integrated Epley Formula ($1RM = w \times (1 + r/30)$) for instant strength estimates.
+
 The "W" Protocol: Automated rep schemes based on Soviet weightlifting techniques:
+
 Example: 5-4-3-2-1-2-3-4-5-4-3-2-1-2-3-4-5
+
 Intelligent Rest Timer: Optimized for ATP-CP system recovery with customizable 30–60 second intervals.
+
 Interactive Rep Tracker: A visual "bubble" interface to navigate through high-volume sets.
+
 Adaptive Theme: Full Light and Dark mode support for optimal visibility in any gym lighting.
+
 Form Tutorials: Embedded video guides for complex movements like Landmine Lifts and Roman Chair setups.
+
+Custom Reps
+
+Navy BMI calculator
+
+Dictionary of lifting
+
+Recursive selection of 1RM % to fill out and calculate power.
 
 ##🔬 Scientific Rationale
 
