@@ -1,85 +1,61 @@
-W-Weight: Soviet-Inspired Strength Tracker
+##W-Weight: Soviet-Inspired Strength Tracker
 
 A high-performance weightlifting tracker built for the data-driven lifter. This application specializes in the Soviet Wavy Periodization method and utilizes the Epley Formula to calculate 1RM with precision.
 
-## Project Overview
+##📖 Project Overview
 
 W-Weight is designed to manage high-volume strength training and powerbuilding routines without overtaxing the central nervous system. By tracking specific muscle groups—from glutes to traps—the app provides a structured approach to the Double-Ladder "W" Procedure.
+The logic is built to handle heavy intensity (e.g., 400lb+ squats) by managing volume density rather than training to absolute failure.
 
-## Key Features
+##✨ Key Features
 
 1RM Calculator: Integrated Epley Formula ($1RM = w \times (1 + r/30)$) for instant strength estimates.
-
-The "W" Protocol: Automated rep schemes (5-4-3-2-1-2-3...) based on Soviet weightlifting techniques.
-
-Intelligent Rest Timer: Optimized for ATP-CP system recovery with 30-60 second intervals.
-
-Adaptive Theme: Light and Dark mode support for any gym environment.
-
+The "W" Protocol: Automated rep schemes based on Soviet weightlifting techniques:
+Example: 5-4-3-2-1-2-3-4-5-4-3-2-1-2-3-4-5
+Intelligent Rest Timer: Optimized for ATP-CP system recovery with customizable 30–60 second intervals.
+Interactive Rep Tracker: A visual "bubble" interface to navigate through high-volume sets.
+Adaptive Theme: Full Light and Dark mode support for optimal visibility in any gym lighting.
 Form Tutorials: Embedded video guides for complex movements like Landmine Lifts and Roman Chair setups.
 
-## Project Demo
+##🔬 Scientific Rationale
 
-See the application in action, featuring the light/dark theme toggle and the Double-Ladder "W" setup:
+The training logic within this app focuses on three core pillars:
+Density: Accumulating high total volume (e.g., 57+ reps) at 70–80% 1RM to build a massive strength base.
+Active Recovery: Utilizing lower-rep "rungs" within the wavy set to allow the nervous system to recharge between peaks.
+Power Maintenance: Ensuring each rep is performed with maximum crispness and power output by avoiding the "grind" of failure-based training.
 
----
+##🛠 Tech Stack
 
-## Issue Tracking & Demonstrations
+Framework: React with TypeScript
+Styling: Tailwind CSS / Shadcn UI
+Icons: Lucide React
+Runtime: Node.js (Vite)
+Design Origin: Based on this Figma setup.
 
-To ensure the precision of the high-intensity resistance protocols and periodization calculations within **w-weight**, functional issues are documented with visual demonstrations.
+##🚀 How to Use
 
-=======
-### Current Technical Issue
-A new demonstration has been logged regarding the current application state. This recording walks through the specific interface interactions and logic currently under review.
-
-[Issue #2: Weightlifting App Feature Request](https://github.com/ludiusvox/w-weight/issues/2#issue-4219838950)
-=======
-### Current Technical Issue
-A new demonstration has been logged regarding the current application state. This recording walks through the specific interface interactions and logic currently under review.
-
-[![W-Weight Demo Video](https://img.youtube.com/vi/placeholder/0.jpg)](https://github.com/ludiusvox/w-weight/issues/1)
->>>>>>> 29bd17b (v1.5 setup)
-
-> **Note:** If the preview above is static, click it to launch the full high-resolution `.webm` recording in the project tracker at **Issue #1**.
-
----
-
-*For technical contributors: Please refer to the [Issue Tracker](https://github.com/ludiusvox/w-weight/issues) for the full discussion and debugging logs associated with this demonstration.*
-
-## Scientific Rationale
-
-The training logic within this app focuses on:Density: Accumulating 57 reps at 70-80% 1RM without reaching failure.
-
-Active Recovery: Utilizing lower rep rungs to allow the nervous system to recharge between peaks.
-
-Power Maintenance: Ensuring each rep is performed with maximum crispness and power output.
-
-## Tech StackPlatform: Web-based (Optimized for Mobile/Desktop)
-
-Methodologies: Soviet Wavy Method, Golgi Tendon Organ (GTO) focus.
-
-## How to Use
-
-Calculate: Enter your weight and reps in the 1RM calculator.
-
-Select: Choose your target muscle group.
-
+Calculate: Enter your weight and reps in the 1RM calculator to establish your baseline.
+Select: Choose your target muscle group (e.g., Glutes, Quads, Traps, Prilepins).
 Train: Follow the generated "W" rep scheme.
-
 Recover: Use the built-in rest timer to ensure ATP restoration before the next set.
+Running the Code Locally
 
-Developed by LudiusVox
+Bash
 
 
+# Install dependencies
+npm i
+
+# Start the development server
+npm run dev
 
 
-  # Weightlifting app setup
+##📺 Project Demo & Issue Tracking
 
-  This is a code bundle for Weightlifting app setup. The original project is available at https://www.figma.com/design/58AqtHAjdgoz6ZQDKmgYX3/Weightlifting-app-setup.
+To ensure the precision of the high-intensity protocols and periodization calculations, functional issues are documented with visual demonstrations.
+Current Technical Status
+A demonstration has been logged regarding the current interface interactions and logic under review.
+Note: For a full high-resolution .webm recording, please visit Issue #1 in the Project Tracker.
 
-  ## Running the code
-
-  Run `npm i` to install the dependencies.
-
-  Run `npm run dev` to start the development server.
+##Developed by LudiusVox
   
