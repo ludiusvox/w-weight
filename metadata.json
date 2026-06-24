@@ -1,0 +1,6 @@
+{
+  "name": "Pyramid Workout Tracker",
+  "description": "A comprehensive tracking tool for pyramid style lifting schemes, featuring science-based guides, periodization timelines, and customized 1RM metrics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

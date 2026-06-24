@@ -1,6 +1,8 @@
 node_modules/
+build/
 dist/
-android/
-.env
-android/
-.aider*
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
