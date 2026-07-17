@@ -269,8 +269,13 @@ export default function App() {
 
     relevantLogs = filterLogsByTimeframe(relevantLogs, analyticsHistoryFilter);
 
-    // Capture weights from relevant logs (chronologically, oldest to newest)
-    return relevantLogs.slice().reverse().map(l => l.weight);
+    // Capture estimated 1RMs from relevant logs (chronologically, oldest to newest)
+    return relevantLogs.slice().reverse().map(l => {
+      // If reps is 1, the weight is likely already the 1RM
+      if (l.reps <= 1) return l.weight;
+      // Epley Formula: 1RM = w * (1 + 0.0333 * r)
+      return Math.round(l.weight * (1 + 0.0333 * l.reps));
+    });
   };
 
   const getGraphLabelsForRegion = (region: string): string[] => {
@@ -304,22 +309,27 @@ export default function App() {
       exerciseId: statsLogExercise,
       weight: statsLogWeight,
       reps: statsLogReps,
-      intensityPercent: Math.round((statsLogWeight / estimated1RM) * 100) || 75
+      intensityPercent: Math.round((statsLogWeight / (currentCalibrated1RM || estimated1RM)) * 100) || 75
     };
 
     const updatedLogs = [newLog, ...trackerHistory];
     setTrackerHistory(updatedLogs);
     localStorage.setItem('pyramid_logs', JSON.stringify(updatedLogs));
 
-    // Also update personal best if applicable
+    // Also update personal best if applicable (using estimated 1RM)
+    const currentEstimated1RM = statsLogReps <= 1
+      ? statsLogWeight
+      : Math.round(statsLogWeight * (1 + 0.0333 * statsLogReps));
+
     const exerciseNameShort = statsLogExercise.split(' + ')[0];
     const matchingPb = personalBests.find(pb => pb.name.toLowerCase() === statsLogExercise.toLowerCase() || statsLogExercise.includes(pb.name));
-    if (!matchingPb || statsLogWeight > matchingPb.weight) {
+
+    if (!matchingPb || currentEstimated1RM > matchingPb.weight) {
       const newPb: ExercisePB = {
         exerciseId: matchingPb?.exerciseId || `pb_${Math.random().toString(36).substring(2, 7)}`,
         name: exerciseNameShort,
         category: 'Muscle Class',
-        weight: statsLogWeight,
+        weight: currentEstimated1RM,
         variation: statsLogExercise,
         date: new Date().toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })
       };
@@ -373,7 +383,7 @@ export default function App() {
       id: Math.random().toString(36).substring(2, 9),
       timestamp: '12:00 PM ' + (calibratorDate ? (calibratorDate.includes(',') ? calibratorDate.split(',')[0] : calibratorDate) : new Date().toLocaleDateString([], { month: 'short', day: 'numeric' })),
       exerciseId: calibratorExercise,
-      weight: calculated1RM,
+      weight: calibratorWeight,
       reps: calibratorMethod === 'direct' ? 1 : calibratorReps,
       intensityPercent: 100,
       rungIndex: 0,
@@ -575,7 +585,7 @@ export default function App() {
     const r = parseInt(calcReps);
     if (!isNaN(w) && !isNaN(r) && r > 0) {
       // Epley Formula: 1RM = w * (1 + 0.0333 * r)
-      const calculated = Math.round(w * (1 + 0.0333 * r));
+      const calculated = r <= 1 ? Math.round(w) : Math.round(w * (1 + 0.0333 * r));
       setEstimated1RM(calculated);
       triggerToast(`Calculated Estimated 1RM: ${calculated} lbs`);
     } else {
@@ -615,13 +625,14 @@ export default function App() {
 
   // --- Logging Active Set ---
   const handleLogActiveSet = () => {
+    const currentRefRM = currentCalibrated1RM || estimated1RM;
     const newLog: SetLog = {
       id: Math.random().toString(36).substring(2, 9),
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' ' + new Date().toLocaleDateString([], { month: 'short', day: 'numeric' }),
       exerciseId: selectedExerciseTracker,
       weight: weightValue,
       reps: repsValue,
-      intensityPercent: Math.round((weightValue / estimated1RM) * 100) || 75,
+      intensityPercent: Math.round((weightValue / currentRefRM) * 100) || 75,
       rungIndex: activeRungIndex,
       stopwatchTimeStr: formatStopwatchTime(stopwatchTime)
     };
@@ -650,13 +661,18 @@ export default function App() {
     updateExerciseProgress(selectedExerciseTracker, nextReps, finalRung);
 
     // Update PB if logged set is higher than any stored PB for this exercise type
+    const currentEstimated1RM = repsValue <= 1
+      ? weightValue
+      : Math.round(weightValue * (1 + 0.0333 * repsValue));
+
     const matchingPb = personalBests.find(pb => pb.name.toLowerCase() === selectedExerciseTracker.toLowerCase() || selectedExerciseTracker.includes(pb.name));
-    if (!matchingPb || weightValue > matchingPb.weight) {
+
+    if (!matchingPb || currentEstimated1RM > matchingPb.weight) {
       const newPb: ExercisePB = {
         exerciseId: matchingPb?.exerciseId || 'custom_lift',
         name: selectedExerciseTracker.split(' + ')[0],
         category: 'Muscle Class',
-        weight: weightValue,
+        weight: currentEstimated1RM,
         variation: selectedExerciseTracker,
         date: new Date().toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })
       };
@@ -1666,10 +1682,10 @@ export default function App() {
                 <span>Core Area Benchmark Analyzed</span>
                 {(() => {
                   const currentData = getGraphDataForRegion(activeMuscleRegion);
-                  const diff = currentData[currentData.length - 1] - currentData[0];
+                  const diff = currentData.length > 1 ? currentData[currentData.length - 1] - currentData[0] : 0;
                   const prefix = diff >= 0 ? '+' : '';
                   return (
-                    <span className="text-emerald-400 font-bold">
+                    <span className={`${diff >= 0 ? 'text-emerald-400' : 'text-red-400'} font-bold`}>
                       Total Gain: {prefix}{diff} lbs
                     </span>
                   );
